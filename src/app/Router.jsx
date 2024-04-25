@@ -10,7 +10,7 @@ const Router = () => (
       <Route index element={<Home />} />
       <Route path="/read" element={<Read />} />
       <Route path="/create" element={<Create />} />
-      <Route path="/updateanddelete" element={<UpdateAndDelete />} />
+      <Route path="/profile/:id" element={<UpdateAndDelete />} />
     </Routes>
   </BrowserRouter>
 );
