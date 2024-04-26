@@ -3,6 +3,7 @@ import UpdateAndDelete from "../pages/UpdateAndDelete/UpdateAndDelete";
 import Create from "../pages/Create/Create";
 import Read from "../pages/Read/Read";
 import Home from "../pages/Home/Home";
+import Library from "../pages/Library/Library";
 
 const Router = () => (
   <BrowserRouter>
@@ -11,6 +12,7 @@ const Router = () => (
       <Route path="/read" element={<Read />} />
       <Route path="/create" element={<Create />} />
       <Route path="/profile/:id" element={<UpdateAndDelete />} />
+      <Route path="/books" element={<Library />} />
     </Routes>
   </BrowserRouter>
 );

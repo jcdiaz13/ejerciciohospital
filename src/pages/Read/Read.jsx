@@ -20,6 +20,8 @@ const Read = () => {
   return (
     <Container>
       <h1>READ</h1>
+      <Link to={`/`}>Home</Link> <br />
+      <br />
       <table>
         <thead>
           <tr>

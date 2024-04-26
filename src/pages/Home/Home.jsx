@@ -10,6 +10,9 @@ const Home = () => (
       <li>
         <NavLink to="/read">Read</NavLink>
       </li>
+      <li>
+        <NavLink to="/books">Books</NavLink>
+      </li>
     </ul>
   </div>
 );

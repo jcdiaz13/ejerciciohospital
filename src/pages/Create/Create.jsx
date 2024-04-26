@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { createPerson } from "../../app/services/people";
+import { Link } from "react-router-dom";
 const Create = () => {
   const [userName, setUsername] = useState();
   const [userSurName, setUserSurname] = useState();
@@ -11,6 +12,7 @@ const Create = () => {
   return (
     <div>
       <h1>CREATE</h1>
+      <Link to={`/`}>Home</Link> <br /> <br />
       <input
         type="text"
         placeholder="Pacient Name"

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Container } from "./readstyles";
 import { getItems } from "../app/services/people";
 import { Link } from "react-router-dom";
+import { Table } from "./readstyles";
 
 const Read = () => {
   const [users, setUsers] = useState();
@@ -18,9 +18,9 @@ const Read = () => {
   }, []);
 
   return (
-    <Container>
+    <div>
       <h1>Read</h1>
-      <table>
+      <Table>
         <thead>
           <tr>
             <th>ID</th>
@@ -41,8 +41,8 @@ const Read = () => {
             </tr>
           ))}
         </tbody>
-      </table>
-    </Container>
+      </Table>
+    </div>
   );
 };
 

@@ -1,24 +1,24 @@
 import { useEffect, useState } from "react";
 import { deleteItem, getItemById, updateItem } from "../../app/services/people";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 const UpdateAndDelete = () => {
-  const [users, setUsers] = useState({});
+  const [user, setUser] = useState({});
+  const { id } = useParams();
+  const navigate = useNavigate();
   // const [userName, setUserName] = useState();
   // const [userSurName, setUserSurName] = useState();
   // const [userDate, setUserDate] = useState();
-  const { id } = useParams();
-  const navigate = useNavigate();
 
   useEffect(() => {
     getItemById(id).then((res) => {
+      setUser(res);
+      console.log(res);
+
       // const user = res;
       // setUserName(user.userName);
       // setUserSurName(user.userSurName);
       // setUserDate(user.userDate);
-
-      setUsers(res);
-      console.log(res);
     });
   }, [id]);
 
@@ -29,7 +29,7 @@ const UpdateAndDelete = () => {
 
   const handleUpdate = async () => {
     // await updateItem(id, { userName, userSurName, userDate });
-    await updateItem(id, users);
+    await updateItem(id, user);
     navigate("/read");
   };
 
@@ -37,25 +37,26 @@ const UpdateAndDelete = () => {
     <div>
       <h1>UPDATE AND DELETE</h1>
       <div>
+        <Link to={`/`}>Home</Link> <br /> <br />
         <input
-          value={users.userName}
+          value={user.userName || ""}
           type="text"
           placeholder="Name"
-          onChange={(e) => setUsers({ ...users, userName: e.target.value })}
+          onChange={(e) => setUser({ ...user, userName: e.target.value })}
           // onChange={(e) => setUserName(e.target.value)}
         />
         {/* onChange={(e) => {...users,userName:e.target.value}} */}
         <input
-          value={users.userSurName}
+          value={user.userSurName || ""}
           type="text"
           placeholder="Surname"
-          onChange={(e) => setUsers({ ...users, userSurName: e.target.value })}
+          onChange={(e) => setUser({ ...user, userSurName: e.target.value })}
           // onChange={(e) => setUserSurName(e.target.value)}
         />
         <input
-          value={users.userDate} //userDate  (el valor de estado correspondiente)
+          value={user.userDate || ""} //userDate  (el valor de estado correspondiente)
           type="date"
-          onChange={(e) => setUsers({ ...users, userDate: e.target.value })}
+          onChange={(e) => setUser({ ...user, userDate: e.target.value })}
           // onChange={(e) => setUserDate(e.target.value)}
         />
       </div>
