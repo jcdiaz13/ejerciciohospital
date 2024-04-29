@@ -5,10 +5,10 @@ const Home = () => (
     <h1>HOME</h1>
     <ul>
       <li>
-        <NavLink to="/create">Create</NavLink>
+        <NavLink to="/create">Create Pacient</NavLink>
       </li>
       <li>
-        <NavLink to="/read">Read</NavLink>
+        <NavLink to="/read">Read Pacients</NavLink>
       </li>
       <li>
         <NavLink to="/books">Books</NavLink>
