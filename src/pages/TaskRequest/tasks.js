@@ -1,22 +1,22 @@
 import { auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, GoogleAuthProvider, signInWithPopup, sendPasswordResetEmail, fetchSignInMethodsForEmail, sendEmailVerification, db, doc, getDoc, getDocs, collection, setDoc, updateDoc, deleteDoc, addDoc, query, where, onSnapshot } from "./api";
 
-const collectionName = 'people';
+const collectionName = 'tasks';
 
 // CREATE
-export const createPerson = async(obj) => {
+export const createTask = async(obj) => {
     const colRef = collection(db, collectionName);
     const data = await addDoc(colRef, obj);
     return data.id;
 }
 
 // UPDATE
-export const updatePerson = async (id, obj) => {
+export const updateTask = async (id, obj) => {
     const docRef = doc(db, collectionName, id);
     await updateDoc(docRef, obj)
 }
 
 // READ
-export const getPersons= async ()  => {
+export const getTasks= async ()  => {
     const colRef = collection(db, collectionName);
     const result = await getDocs(query(colRef));
     return getArrayFromCollection(result);
@@ -24,20 +24,20 @@ export const getPersons= async ()  => {
 
 // READ WITH WHERE
 // Tener en cuenta que el tipo de dato de la condición debe coincidir con el tipo de dato que hay en Firebase o no obtendré un dato de respuesta
-export const getPersonsByCondition = async (value) => {
+export const getTasksByCondition = async (value) => {
     const colRef = collection(db, collectionName);
     const result = await getDocs(query(colRef, where('age', '==', value)));
     return getArrayFromCollection(result);
 }
 
-export const getPersonById = async (id) => {
+export const getTaskById = async (id) => {
     const docRef = doc(db, collectionName, id);
     const result = await getDoc(docRef);
     return result.data();
 }
 
 // DELETE
-export const deletePerson = async (id) => {
+export const deleteTask = async (id) => {
     const docRef = doc(db, collectionName, id);
     await deleteDoc(docRef);
 }
@@ -47,15 +47,3 @@ const getArrayFromCollection = (collection) => {
         return { ...doc.data(), id: doc.id };
     });
 }
-
-export const access = async (name) => {
-    console.log('1111111', name)
-    const colRef = collection(db, collectionName);
-    const result = await getDocs(query(colRef, where('name', '==', name)));
-    if (result.size === 0) {
-        const a = await addDoc(colRef, { name });
-        return a.id;
-    }
-    return result.docs[0].id;
-}
-

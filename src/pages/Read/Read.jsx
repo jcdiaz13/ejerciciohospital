@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Container } from "./Read.styles";
-import { getItems } from "../../app/services/people";
+import { getPersons } from "../../app/services/people";
 import { Link } from "react-router-dom";
 
 const Read = () => {
   const [users, setUsers] = useState();
 
   const consult = () => {
-    getItems().then((res) => {
+    getPersons().then((res) => {
       setUsers(res);
       console.log(res);
     });

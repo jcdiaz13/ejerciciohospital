@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { deleteItem, getItemById, updateItem } from "../../app/services/people";
+import {
+  deletePerson,
+  getPersonById,
+  updatePerson,
+} from "../../app/services/people";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 const UpdateAndDelete = () => {
@@ -11,7 +15,7 @@ const UpdateAndDelete = () => {
   // const [userDate, setUserDate] = useState();
 
   useEffect(() => {
-    getItemById(id).then((res) => {
+    getPersonById(id).then((res) => {
       setUser(res);
       console.log(res);
 
@@ -23,13 +27,13 @@ const UpdateAndDelete = () => {
   }, [id]);
 
   const handleDelete = async () => {
-    await deleteItem(id);
+    await deletePerson(id);
     navigate("/read");
   };
 
   const handleUpdate = async () => {
     // await updateItem(id, { userName, userSurName, userDate });
-    await updateItem(id, user);
+    await updatePerson(id, user);
     navigate("/read");
   };
 

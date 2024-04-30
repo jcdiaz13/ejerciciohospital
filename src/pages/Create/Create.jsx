@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { createPerson } from "../../app/services/people";
 import { Link } from "react-router-dom";
+import { createPerson } from "../../app/services/people";
 const Create = () => {
   const [userName, setUsername] = useState();
   const [userSurName, setUserSurname] = useState();

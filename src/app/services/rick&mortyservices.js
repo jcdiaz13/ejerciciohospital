@@ -1,5 +1,4 @@
 import { i } from "./rick&mortyapi"
-import axios from "axios";
 
 export const getCharacters = async () => {
   const response = await i.get("/character")
@@ -13,7 +12,7 @@ export const getCharacterById = (id) => i.get(`/character/${id}`)
 export const getEpisodes = async (episodeUrls) => {
   const episodes = await Promise.all(
     episodeUrls.map(async (url) =>{
-      const res = await axios.get(url);
+      const res = await i.get(url);
       return res.data;
     })
   );
