@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { getCharacters } from "../../app/services/rick&mortyservices";
-import { StyledContainer } from "./RickMorty.styles";
+import { Box, StyledContainer } from "./RickMorty.styles";
 import { Link, NavLink } from "react-router-dom";
-import { Title } from "../RickMortyProfile/RickMortyProfile.styles";
-// import { Link } from "react-router-dom";
 
 const RickMorty = () => {
   const [characters, setCharacters] = useState([]);
@@ -16,13 +14,13 @@ const RickMorty = () => {
   }, []);
 
   return (
-    <div>
+    <StyledContainer>
       <NavLink to={"/"}>Home</NavLink>
-      <Title>RICK & MORTY</Title>
-      <StyledContainer>
-        {characters.map((character, i) => {
+      <h1>RICK & MORTY</h1>
+      <Box>
+        {characters.map((character) => {
           return (
-            <div key={i}>
+            <div key={character.id}>
               <Link to={`/Rick&MortyProfile/${character.id}`}>
                 <img src={character.image} />
               </Link>
@@ -30,8 +28,8 @@ const RickMorty = () => {
             </div>
           );
         })}
-      </StyledContainer>
-    </div>
+      </Box>
+    </StyledContainer>
   );
 };
 
