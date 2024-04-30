@@ -1,17 +1,17 @@
 import { useState } from "react";
-import { deleteItem, updateItem } from "../../app/services/books";
+import { deleteBook, updateBook } from "../../app/services/books";
 
 const Tr = ({ book, render }) => {
   const [title, setTitle] = useState(book.title);
   const [price, setPrice] = useState(book.price);
 
   const handleClickDelete = () => {
-    deleteItem(book.id);
+    deleteBook(book.id);
     render();
   };
 
   const handleClickUpdate = () => {
-    updateItem(book.id, { title, price });
+    updateBook(book.id, { title, price });
   };
   return (
     <tr>

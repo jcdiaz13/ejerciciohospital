@@ -13,6 +13,12 @@ const Home = () => (
       <li>
         <NavLink to="/books">Books</NavLink>
       </li>
+      <li>
+        <NavLink to="/taskhome">Tasks</NavLink>
+      </li>
+      <li>
+        <NavLink to="/rick&morty">Rick & Morty</NavLink>
+      </li>
     </ul>
   </div>
 );

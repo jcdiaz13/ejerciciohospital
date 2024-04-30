@@ -2,6 +2,11 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   table, td, th {
-    border: 1px solid black;
+    border-collapse: collapse ;
+    border: 5px solid black;
+  }
+
+  input {
+    border: 0;
   }
 `;

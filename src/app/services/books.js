@@ -10,13 +10,13 @@ export const createBook= async(obj) => {
 }
 
 // UPDATE
-export const updateItem = async (id, obj) => {
+export const updateBook = async (id, obj) => {
     const docRef = doc(db, collectionName, id);
     await updateDoc(docRef, obj)
 }
 
 // READ
-export const getItems= async ()  => {
+export const getBooks= async ()  => {
     const colRef = collection(db, collectionName);
     const result = await getDocs(query(colRef));
     return getArrayFromCollection(result);
@@ -24,20 +24,20 @@ export const getItems= async ()  => {
 
 // READ WITH WHERE
 // Tener en cuenta que el tipo de dato de la condición debe coincidir con el tipo de dato que hay en Firebase o no obtendré un dato de respuesta
-export const getItemsByCondition = async (value) => {
+export const getBooksByCondition = async (value) => {
     const colRef = collection(db, collectionName);
     const result = await getDocs(query(colRef, where('age', '==', value)));
     return getArrayFromCollection(result);
 }
 
-export const getItemById = async (id) => {
+export const getBookById = async (id) => {
     const docRef = doc(db, collectionName, id);
     const result = await getDoc(docRef);
     return result.data();
 }
 
 // DELETE
-export const deleteItem = async (id) => {
+export const deleteBook = async (id) => {
     const docRef = doc(db, collectionName, id);
     await deleteDoc(docRef);
 }

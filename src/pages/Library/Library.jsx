@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import Tr from "./Tr";
-import { createBook, getItems } from "../../app/services/books";
+import { createBook, getBooks } from "../../app/services/books";
 import { Container } from "./Books.styles";
+import { NavLink } from "react-router-dom";
 
 const App = () => {
   const [books, setBooks] = useState();
   const [title, setTitle] = useState();
   const [price, setPrice] = useState();
-
   const render = () => {
-    getItems().then((res) => {
+    getBooks().then((res) => {
       setBooks(res);
-      console.log(res);
+      // console.log(res);
     });
   };
 
@@ -29,6 +29,7 @@ const App = () => {
 
   return (
     <Container>
+      <NavLink to={"/"}>Home</NavLink>
       <table>
         <thead>
           <tr>
@@ -47,14 +48,14 @@ const App = () => {
             <td>
               <input
                 type="text"
-                value={title}
+                value={title || ""}
                 onChange={(e) => setTitle(e.target.value)}
               />
             </td>
             <td>
               <input
                 type="text"
-                value={price}
+                value={price || ""}
                 onChange={(e) => setPrice(e.target.value)}
               />
             </td>
